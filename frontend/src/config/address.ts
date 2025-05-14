@@ -1,0 +1,2 @@
+// 合約地址
+export const CONTRACT_ADDRESS = '0x1D05De24c97033c0BcFA210EF8Bc7Dedf752029a';
