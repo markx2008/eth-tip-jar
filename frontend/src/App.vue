@@ -1,19 +1,16 @@
 <template>
   <div>
     <h1>ETH Tip Jar</h1>
-    <TipForm />
-    <TipList />
+    <TipPage />
   </div>
 </template>
 
 <script>
-import TipForm from "./components/TipForm.vue";
-import TipList from "./components/TipList.vue";
+import TipPage from "./components/TipPage.vue";
 
 export default {
   components: {
-    TipForm,
-    TipList,
+    TipPage,
   },
 };
 </script>

@@ -3,7 +3,10 @@
     <h3>Tip History</h3>
     <ul>
       <li v-for="(tip, index) in tips" :key="index">
-        <p>{{ tip.sender }} sent {{ tip.amount }} ETH: {{ tip.message }}</p>
+        <p>
+          {{ tip.sender.substring(0, 6) }}...{{ tip.sender.substring(38) }} sent
+          {{ parseFloat(tip.amount).toFixed(4) }} ETH: {{ tip.message }}
+        </p>
       </li>
     </ul>
   </div>
@@ -27,16 +30,15 @@ onMounted(async () => {
     // 使用 ethers v6 的 BrowserProvider
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
-    const contract = new ethers.Contract(CONTRACT_ADDRESS, TipJarABI, signer);
+    const contract = new ethers.Contract(CONTRACT_ADDRESS, TipJarABI.abi, signer);
 
     try {
-      // 假設有一個 getTips() 函數返回打賞記錄
-      const events = await contract.queryFilter("TipSent");
+      const tipArray = await contract.getTips();
 
-      tips.value = events.map((event) => ({
-        sender: event.args.from, // 更改為 event.args.from
-        amount: ethers.formatEther(event.args.amount),
-        message: event.args.message,
+      tips.value = tipArray.map((tip) => ({
+        sender: tip.from,
+        amount: ethers.formatEther(tip.amount),
+        message: tip.message,
       }));
     } catch (error) {
       console.error("獲取打賞記錄失敗:", error);

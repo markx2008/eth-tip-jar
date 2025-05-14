@@ -35,3 +35,4 @@ Thumbs.db
 
 # 但保留範例檔
 !.env.example
+bin/
