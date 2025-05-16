@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "hardhat compile",
+    "postcompile": "if exist \"frontend\\src\\abis\" rd /s /q \"frontend\\src\\abis\" & md \"frontend\\src\\abis\" & copy /Y \"artifacts\\contracts\\TipJar.sol\\TipJar.json\" \"frontend\\src\\abis\\TipJar.json\" || echo Error: Failed to copy contract artifacts"
   },
   "keywords": [],
   "author": "",
