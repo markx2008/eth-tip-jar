@@ -1,18 +1,13 @@
 {
   "name": "eth-tip-jar",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "hardhat compile",
-    "postcompile": "if exist \"frontend\\src\\abis\" rd /s /q \"frontend\\src\\abis\" & md \"frontend\\src\\abis\" & copy /Y \"artifacts\\contracts\\TipJar.sol\\TipJar.json\" \"frontend\\src\\abis\\TipJar.json\" || echo Error: Failed to copy contract artifacts"
+    "contracts:compile": "npx hardhat clean && npx hardhat compile && node -e \"const fs = require('fs'); fs.mkdirSync('frontend/src/abis', { recursive: true }); fs.copyFileSync('smart-contracts/artifacts/smart-contracts/contracts/TipJar.sol/TipJar.json', 'frontend/src/abis/TipJar.json');\"",
+    "frontend:dev": "cd frontend && npm run dev"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@types/node": "^22.15.18",
     "hardhat": "^2.24.0"
   },
   "dependencies": {

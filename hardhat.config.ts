@@ -12,6 +12,12 @@ const config: HardhatUserConfig = {
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
     },
   },
+  paths: {
+    sources: "./smart-contracts/contracts",
+    tests: "./smart-contracts/test",
+    cache: "./smart-contracts/cache",
+    artifacts: "./smart-contracts/artifacts"
+  },
 };
 
 export default config;

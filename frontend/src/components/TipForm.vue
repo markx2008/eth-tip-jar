@@ -25,7 +25,7 @@ const sendTip = async () => {
     // 使用 ethers v6 的新語法
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
-    const contract = new ethers.Contract(CONTRACT_ADDRESS, TipJarABI.abi, signer);
+    const contract = new ethers.Contract(CONTRACT_ADDRESS, TipJarJson.abi, signer);
 
     // 確保 amount 是字符串
     const amountInEther = amount.value.toString();

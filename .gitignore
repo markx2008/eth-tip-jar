@@ -5,6 +5,7 @@
 
 # 依賴項目
 node_modules/
+**/node_modules/
 package-lock.json
 
 # 編譯文件
@@ -13,9 +14,9 @@ package-lock.json
 /out
 
 # Hardhat
-/artifacts
-/cache
-/typechain-types
+smart-contracts/artifacts/
+smart-contracts/cache/
+smart-contracts/typechain-types/
 
 # IDE 配置
 .vscode/
@@ -36,3 +37,4 @@ Thumbs.db
 # 但保留範例檔
 !.env.example
 bin/
+.vs/
